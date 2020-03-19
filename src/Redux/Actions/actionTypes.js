@@ -1,0 +1,1 @@
+export const STYLES_VARIABLE = "STYLES_VARIABLE";

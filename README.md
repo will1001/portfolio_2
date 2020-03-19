@@ -1,4 +1,4 @@
-Welcome to My Portfolio Website :) [Demo Here](http://will1001.github.io/portfolio_2/).
+Welcome to My Portfolio Website :) [Live here](http://will1001.github.io/portfolio_2/).
 
 <!-- ## Available Scripts
 
