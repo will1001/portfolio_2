@@ -1,12 +1,11 @@
 /* eslint-disable space-before-function-paren */
 import React from 'react'
-import { makeStyles, styled } from '@material-ui/core/styles'
+import PropTypes from 'prop-types'
+import { makeStyles } from '@material-ui/core/styles'
 import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
-import Divider from '@material-ui/core/Divider'
-import Grid from '@material-ui/core/Grid'
+import AppBar from '@material-ui/core/AppBar'
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles(theme => ({
   listMenuContainer: {
@@ -35,15 +34,10 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-const MenuDivider = styled(Divider)({
-  backgroundColor: '#ffffff',
-  marginRight: '3em'
-})
-
-export default function Navbar() {
+export default function Navbar(props) {
   const classes = useStyles()
   return (
-    <>
+    <AppBar position="static" style={props.navbarStyles}>
       <Toolbar className={classes.toolbar}>
         <IconButton
           edge="start"
@@ -51,31 +45,17 @@ export default function Navbar() {
           color="inherit"
           aria-label="menu"
         >
-          <MenuIcon />
+          <Link style={{ color: '#ffffff' }} to={props.link}>
+            {props.iconMenu}
+          </Link>
         </IconButton>
-
-        <Grid
-          container
-          alignItems="center"
-          className={classes.listMenuContainer}
-        >
-          <Typography variant="h6" className={classes.listMenu}>
-            Home
-          </Typography>
-          <MenuDivider orientation="vertical" />
-          <Typography variant="h6" className={classes.listMenu}>
-            About Us
-          </Typography>
-          <MenuDivider orientation="vertical" />
-          <Typography variant="h6" className={classes.listMenu}>
-            Product
-          </Typography>
-          <MenuDivider orientation="vertical" />
-          <Typography variant="h6" className={classes.listMenu}>
-            Contact Us
-          </Typography>
-        </Grid>
       </Toolbar>
-    </>
+    </AppBar>
   )
+}
+
+Navbar.propTypes = {
+  iconMenu: PropTypes.element.isRequired,
+  navbarStyles: PropTypes.object,
+  link: PropTypes.string
 }

@@ -1,26 +1,10 @@
-.gbr{
-animation: App-logo-spin2 infinite 2000ms linear;
+.BgIllustrationAnimation{
+animation: BgIllustrationAnimation infinite 2000ms linear;
+height: 600px;
+padding-left: 111px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes App-logo-spin3 {
-  from {
-    transform:translate(0px,0px);
-  }
-  to {
-    transform:translate(0px,50px);
-  }
-}
-
-@keyframes App-logo-spin2 {
+@keyframes BgIllustrationAnimation {
  0%   {transform:translate(0px,0px);}
   25%  {transform:translate(0px,10px);}
   50%  {transform:translate(0px,15px);}
