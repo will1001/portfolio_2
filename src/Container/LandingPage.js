@@ -11,6 +11,7 @@ import Grid from '@material-ui/core/Grid'
 import Navbar from '../Components/Navbar'
 import './LandingPage.css'
 import MenuIcon from '@material-ui/icons/Menu'
+import { v4 as uuidv4 } from 'uuid'
 
 const useStyles = makeStyles({
   BgBox: BgBoxprops => ({
@@ -19,6 +20,18 @@ const useStyles = makeStyles({
     minHeight: '100vh',
     fontFamily: 'Montserrat'
   }),
+  asdf: {
+    height: 150,
+    width: 300,
+    backgroundColor: '#aac45e',
+    position: 'absolute',
+    top: BgBoxprops => BgBoxprops.top,
+    opacity: '50%',
+    display: 'none'
+  },
+  abc: {
+    cursor: 'pointer'
+  },
   bodyContent: {
     paddingLeft: 27,
     fontFamily: 'Rubik',
@@ -33,8 +46,36 @@ const useStyles = makeStyles({
     '& p': {
       lineHeight: '25px'
     }
+  },
+  showhologramProject: {
+    display: 'block'
   }
 })
+const topbed = [
+  {
+    top: 113,
+    right: 300
+  },
+  {
+    top: 350,
+    right: 0
+  },
+  {
+    top: 350,
+    right: 500
+  }
+]
+const Asdf = topbed.map(a =>
+  styled('div')({
+    height: 150,
+    width: 300,
+    backgroundColor: '#aac45e',
+    position: 'absolute',
+    top: a.top,
+    right: a.right,
+    opacity: '50%'
+  })
+)
 
 const PortfolioButton = styled(Button)({
   backgroundColor: '#ff2fcb',
@@ -48,12 +89,27 @@ const PortfolioButton = styled(Button)({
 
 export default function LandingPage() {
   const stylesSetup = useSelector(state => state.StylesParameter.stylesSetup[0])
+
   const BgBoxprops = {
     backgroundColor: stylesSetup.primaryColor,
-    color: stylesSetup.fontColor
+    color: stylesSetup.fontColor,
+    top: 89
   }
+
   const classes = useStyles(BgBoxprops)
 
+  const [holloProjectisOpen, setHolloProjectisOpen] = React.useState(false)
+  const [zoomOut, setzoomOut] = React.useState('zoomOut')
+
+  // prevent zoomOut effect when first render
+  React.useEffect(() => {
+    setzoomOut('zoomOut0')
+  }, [])
+
+  const openHollowProject = () => {
+    setHolloProjectisOpen(!holloProjectisOpen)
+    setzoomOut('zoomOut')
+  }
   return (
     <Box className={classes.BgBox}>
       <Navbar
@@ -74,7 +130,19 @@ export default function LandingPage() {
           </Link>
         </Grid>
         <Grid item xs={8}>
-          <BgIllustration className="BgIllustrationAnimation" />
+          <div className={classes.abc}>
+            <BgIllustration
+              onClick={openHollowProject}
+              className="BgIllustrationAnimation"
+            />
+          </div>
+          {Asdf.map(Aaa => (
+            <Aaa
+              className={holloProjectisOpen ? 'zoomIn' : zoomOut}
+              // style={{ display: holloProjectisOpen ? 'block' : 'none' }}
+              key={uuidv4()}
+            ></Aaa>
+          ))}
         </Grid>
       </Grid>
     </Box>

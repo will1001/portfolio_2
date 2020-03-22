@@ -39,16 +39,16 @@ export default function Navbar(props) {
   return (
     <AppBar position="static" style={props.navbarStyles}>
       <Toolbar className={classes.toolbar}>
-        <IconButton
-          edge="start"
-          className={classes.menuButton}
-          color="inherit"
-          aria-label="menu"
-        >
-          <Link style={{ color: '#ffffff' }} to={props.link}>
+        <Link style={{ color: '#ffffff' }} to={props.link}>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+          >
             {props.iconMenu}
-          </Link>
-        </IconButton>
+          </IconButton>
+        </Link>
       </Toolbar>
     </AppBar>
   )
