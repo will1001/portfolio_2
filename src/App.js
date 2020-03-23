@@ -2,7 +2,7 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import {
-  BrowserRouter as Router,
+  HashRouter,
   Switch,
   Route
   // useLocation
@@ -18,7 +18,7 @@ function App() {
   // let location = useLocation()
   return (
     <Provider store={store}>
-      <Router>
+      <HashRouter basename="/">
         <Route
           render={({ location }) => (
             <TransitionGroup>
@@ -36,7 +36,7 @@ function App() {
             </TransitionGroup>
           )}
         />
-      </Router>
+      </HashRouter>
     </Provider>
   )
 }
