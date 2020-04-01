@@ -19,22 +19,17 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: BgBoxprops.backgroundColor,
     color: BgBoxprops.color,
     minHeight: '100%',
-    fontFamily: 'Montserrat'
+    fontFamily: 'Montserrat',
+    padding: 10
   }),
-  asdf: {
-    height: 150,
-    width: 300,
-    backgroundColor: '#aac45e',
-    position: 'absolute',
-    top: BgBoxprops => BgBoxprops.top,
-    opacity: '50%',
-    display: 'none'
-  },
   BgIllustrationAnimation: {
     animation: 'BgIllustrationAnimation infinite 2000ms linear',
     height: 600,
     [theme.breakpoints.down('xs')]: {
-      height: 300
+      height: 215
+    },
+    [theme.breakpoints.only('sm')]: {
+      height: 385
     }
   },
   bodyContent: {
@@ -50,6 +45,11 @@ const useStyles = makeStyles(theme => ({
     },
     '& p': {
       lineHeight: '25px'
+    },
+    [theme.breakpoints.down('sm')]: {
+      '& h1': {
+        fontSize: 40
+      }
     }
   },
   showhologramProject: {
@@ -124,7 +124,7 @@ export default function AboutSection() {
   return (
     <Box className={classes.BgBox}>
       <Navbar
-        iconMenu={<MenuIcon />}
+        // iconMenu={<MenuIcon />}
         navbarStyles={{ boxShadow: 'none', backgroundColor: 'transparent' }}
         link="/navbarMenu"
       />

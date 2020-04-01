@@ -23,6 +23,10 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 const useStyles = makeStyles(theme => ({
   root: {
     margin: 10,
+    [theme.breakpoints.down('sm')]: {
+      margin: 0,
+      marginRight: 5
+    },
     [theme.breakpoints.down('xs')]: {
       margin: '10px 0px'
     }
@@ -30,6 +34,9 @@ const useStyles = makeStyles(theme => ({
   media: {
     height: 0,
     paddingTop: '56.25%',
+    [theme.breakpoints.down('sm')]: {
+      paddingTop: '65.25%'
+    },
     [theme.breakpoints.down('xs')]: {
       paddingTop: '87.25%'
     }
@@ -53,7 +60,7 @@ const useStyles = makeStyles(theme => ({
     transform: 'rotate(180deg)'
   },
   cardTitle: {
-    [theme.breakpoints.down('xs')]: {
+    [theme.breakpoints.down('sm')]: {
       fontSize: 14
     }
   }

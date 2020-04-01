@@ -26,11 +26,15 @@ const useStyles = makeStyles(theme => ({
   cover: {
     width: '100%',
     height: '100%',
+    [theme.breakpoints.only('md')]: {
+      // height: '39vh'
+      marginRight: 25
+    },
+    [theme.breakpoints.only('sm')]: {
+      height: '39vh'
+    },
     [theme.breakpoints.down('xs')]: {
       height: 190
-    },
-    [theme.breakpoints.up('sm')]: {
-      height: '39vh'
     }
   },
   controls: {
@@ -42,11 +46,6 @@ const useStyles = makeStyles(theme => ({
   playIcon: {
     height: 38,
     width: 38
-  },
-  dividerHorizontal: {
-    [theme.breakpoints.up('sm')]: {
-      display: 'none'
-    }
   }
 }))
 
@@ -86,7 +85,6 @@ export default function PortfolioCard() {
         </Grid>
         <Divider orientation="vertical" flexItem />
         <Grid item xs={12} sm={5} md={3}>
-          <Divider className={classes.dividerHorizontal} />
           <CardContent className={classes.content}>
             <ListItemIconButton
               title="Live Websites"

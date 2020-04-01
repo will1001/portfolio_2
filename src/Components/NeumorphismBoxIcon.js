@@ -1,9 +1,9 @@
 // eslint-disable-next-line space-before-function-paren
 import React from 'react'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import IconButton from '@material-ui/core/IconButton'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+// import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 const useStyles = makeStyles(theme => ({
   root: Stylesprops => ({
@@ -18,16 +18,40 @@ const useStyles = makeStyles(theme => ({
     height: Stylesprops.height,
     padding: `${Stylesprops.padding}px 0px`,
     '&:hover': Stylesprops.hover
-  })
+  }),
+  button: {
+    [theme.breakpoints.down('md')]: {
+      padding: 10
+    },
+    [theme.breakpoints.down('sm')]: {
+      padding: 1
+    }
+  }
 }))
 
 // eslint-disable-next-line space-before-function-paren
 export default function NeumorphismBoxIcon(props) {
-  const theme = useTheme()
-  const xs = useMediaQuery(theme.breakpoints.down('xs'))
+  // const theme = useTheme()
+  // const xs = useMediaQuery(theme.breakpoints.down('xs'))
+  // const sm = useMediaQuery(theme.breakpoints.only('sm'))
+  // let width
+  // let height
 
-  const width = xs ? props.width - 5 : props.width
-  const height = xs ? props.height - 5 : props.height
+  // if (xs) {
+  //   width = props.width - 5
+  //   height = props.height - 5
+  // }
+  // if (sm) {
+  //   width = props.width - 15
+  //   height = props.height - 15
+  // } else {
+  //   width = props.width
+  //   height = props.height
+  // }
+
+  const width = props.width
+  const height = props.height
+
   const padding = (width - height) / 2
   const boxShadow1 = width / 10
   const boxShadow2 = (width / 10) * 2
@@ -45,7 +69,7 @@ export default function NeumorphismBoxIcon(props) {
 
   return (
     <>
-      <IconButton color="inherit">
+      <IconButton classes={{ root: classes.button }} color="inherit">
         <div className={classes.root}>
           <props.child classes={{ root: classes.icon }} />
         </div>
