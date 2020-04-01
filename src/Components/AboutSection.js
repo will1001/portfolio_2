@@ -3,7 +3,6 @@
 import React from 'react'
 import { makeStyles, styled } from '@material-ui/core/styles'
 import { useSelector } from 'react-redux'
-// import { Link } from 'react-router-dom'
 import { ReactComponent as BgIllustration } from '../Assets/illustration.svg'
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'

@@ -19,13 +19,9 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     margin: 25
-    // [theme.breakpoints.down('sm')]: {
-    //   margin: 5
-    // }
   },
   content: {
     flex: '1 0 auto'
-    // width: '100%'
   },
   cover: {
     width: '100%',
