@@ -1,16 +1,21 @@
+/* eslint-disable space-before-function-paren */
 import React from 'react'
-import { makeStyles, useTheme } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
-import IconButton from '@material-ui/core/IconButton'
-import Typography from '@material-ui/core/Typography'
-import SkipPreviousIcon from '@material-ui/icons/SkipPrevious'
-import PlayArrowIcon from '@material-ui/icons/PlayArrow'
-import SkipNextIcon from '@material-ui/icons/SkipNext'
-import projectImg from '.././Assets/portfolioProjectImg.jpg'
+import projectImg from '../Assets/portfolioProjectImg.jpg'
 import Divider from '@material-ui/core/Divider'
+import GitHubIcon from '@material-ui/icons/GitHub'
+import LanguageIcon from '@material-ui/icons/Language'
+import SpeedIcon from '@material-ui/icons/Speed'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone'
+import Grid from '@material-ui/core/Grid'
+import CenterGrid from './CenterGrid'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,9 +30,11 @@ const useStyles = makeStyles(theme => ({
     flex: '1 0 auto'
   },
   cover: {
-    width: '425px',
-    height: '250px',
-    margin: '25px'
+    width: '100%',
+    height: '100%',
+    [theme.breakpoints.down('xs')]: {
+      height: 190
+    }
   },
   controls: {
     display: 'flex',
@@ -38,60 +45,105 @@ const useStyles = makeStyles(theme => ({
   playIcon: {
     height: 38,
     width: 38
+  },
+  dividerHorizontal: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'none'
+    }
   }
 }))
 
 export default function PortfolioCard() {
   const classes = useStyles()
-  const theme = useTheme()
   return (
     <Card className={classes.root}>
-      <CardMedia
-        className={classes.cover}
-        image={projectImg}
-        title="Live from space album cover"
-      />
-      <div>
-        <CardHeader
-          title="Shrimp and Chorizo Paella"
-          subheader="September 14, 2016"
-        />
-        <ul>
-          <li>asdnkasdad</li>
-          <li>asdnkasdad</li>
-          <li>asdnkasdad</li>
-        </ul>
-      </div>
-      <Divider orientation="vertical" flexItem />
-      <div className={classes.details}>
-        <CardContent className={classes.content}>
-          <Typography component="h5" variant="h5">
-            Live From Space
-          </Typography>
-          <Typography variant="subtitle1" color="textSecondary">
-            Mac Miller
-          </Typography>
-        </CardContent>
-        <div className={classes.controls}>
-          <IconButton aria-label="previous">
-            {theme.direction === 'rtl' ? (
-              <SkipNextIcon />
-            ) : (
-              <SkipPreviousIcon />
-            )}
-          </IconButton>
-          <IconButton aria-label="play/pause">
-            <PlayArrowIcon className={classes.playIcon} />
-          </IconButton>
-          <IconButton aria-label="next">
-            {theme.direction === 'rtl' ? (
-              <SkipPreviousIcon />
-            ) : (
-              <SkipNextIcon />
-            )}
-          </IconButton>
-        </div>
-      </div>
+      <Grid container>
+        <Grid item xs={12} sm={4} className={classes.cover}>
+          <CardMedia
+            className={classes.cover}
+            image={projectImg}
+            title="Preview Project"
+          />
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <CenterGrid
+            child={
+              <div>
+                <CardHeader
+                  title="TShirt Shop"
+                  subheader="Category : e-commerce,shop,tshirt"
+                />
+                <h5>Stack / Technology used :</h5>
+                <ul>
+                  <li>React</li>
+                  <li>React-router</li>
+                  <li>Redux</li>
+                  <li>Sass</li>
+                  <li>Node Js</li>
+                  <li>Express Js</li>
+                  <li>Mongo db</li>
+                </ul>
+              </div>
+            }
+          />
+        </Grid>
+        <Divider orientation="vertical" flexItem />
+        <Grid item xs={12} sm={3}>
+          <Divider className={classes.dividerHorizontal} />
+          <div className={classes.details}>
+            <CardContent className={classes.content}>
+              <ListItem
+                button
+                onClick={() =>
+                  window.open('https://will1001.github.io/portfolio_2/#/')
+                }
+              >
+                <ListItemIcon>
+                  <LanguageIcon />
+                </ListItemIcon>
+                <ListItemText primary="Live Websites" />
+              </ListItem>
+              <ListItem
+                button
+                onClick={() =>
+                  window.open(
+                    'https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fwill1001.github.io%2Fportfolio_2%2F%23%2F&tab=desktop'
+                  )
+                }
+              >
+                <ListItemIcon>
+                  <SpeedIcon />
+                </ListItemIcon>
+                <ListItemText primary="Website Performance" />
+              </ListItem>
+              <ListItem
+                button
+                onClick={() =>
+                  window.open('https://github.com/will1001/portfolio_2')
+                }
+              >
+                <ListItemIcon>
+                  <GitHubIcon />
+                </ListItemIcon>
+                <ListItemText primary="Source Code" />
+              </ListItem>
+              <ListItem
+                button
+                onClick={() =>
+                  window.open(
+                    'http://iloveadaptive.com/url/https%3A%2F%2Fwill1001.github.io%2Fportfolio_2%2F'
+                  )
+                }
+              >
+                <ListItemIcon>
+                  <PhoneIphoneIcon />
+                </ListItemIcon>
+                <ListItemText primary="Responsive View" />
+              </ListItem>
+            </CardContent>
+          </div>
+        </Grid>
+      </Grid>
     </Card>
   )
 }

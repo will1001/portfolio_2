@@ -1,12 +1,7 @@
 /* eslint-disable space-before-function-paren */
 import React from 'react'
 import { Provider } from 'react-redux'
-import {
-  HashRouter,
-  Switch,
-  Route
-  // useLocation
-} from 'react-router-dom'
+import { HashRouter, Switch, Route } from 'react-router-dom'
 import store from './Redux/store'
 import './App.css'
 import LandingPage from './Container/LandingPage'
@@ -15,7 +10,6 @@ import NavbarOpenMenu from './Container/NavbarOpenMenu'
 import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 function App() {
-  // let location = useLocation()
   return (
     <Provider store={store}>
       <HashRouter basename="/">
@@ -23,8 +17,8 @@ function App() {
           render={({ location }) => (
             <TransitionGroup>
               <CSSTransition
-                key={location.key}
-                classNames="slideInDown"
+                key={location.pathname}
+                classNames="fade"
                 timeout={300}
               >
                 <Switch location={location}>

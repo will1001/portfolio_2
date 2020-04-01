@@ -1,13 +1,3 @@
-.BgIllustrationAnimation {
-  animation: BgIllustrationAnimation infinite 2000ms linear;
-  height: 600px;
-  padding-left: 111px;
-}
-
-.animasicok {
-  animation: BgIllustrationAnimation infinite 2000ms linear;
-}
-
 @keyframes BgIllustrationAnimation {
   0% {
     transform: translate(0px, 0px);
