@@ -22,11 +22,17 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 
 const useStyles = makeStyles(theme => ({
   root: {
-    margin: 10
+    margin: 10,
+    [theme.breakpoints.down('xs')]: {
+      margin: '10px 0px'
+    }
   },
   media: {
     height: 0,
-    paddingTop: '56.25%' // 16:9
+    paddingTop: '56.25%',
+    [theme.breakpoints.down('xs')]: {
+      paddingTop: '87.25%'
+    }
   },
   cardActions: {
     backgroundColor: '#372857',
@@ -38,10 +44,18 @@ const useStyles = makeStyles(theme => ({
     marginLeft: 'auto',
     transition: theme.transitions.create('transform', {
       duration: theme.transitions.duration.shortest
-    })
+    }),
+    [theme.breakpoints.down('xs')]: {
+      fontSize: 4
+    }
   },
   expandOpen: {
     transform: 'rotate(180deg)'
+  },
+  cardTitle: {
+    [theme.breakpoints.down('xs')]: {
+      fontSize: 14
+    }
   }
 }))
 
@@ -63,11 +77,14 @@ export default function PortfolioCardV2() {
       >
         <Grid item xs={12}>
           <Card className={classes.root}>
-            <CardHeader title="Shrimp and Chorizo Paella" />
+            <CardHeader
+              classes={{ title: classes.cardTitle }}
+              title="Shrimp and Chorizo Paella"
+            />
             <CardMedia
               className={classes.media}
               image={projectImg}
-              title="Paella dish"
+              title="Portfolio Preview"
             />
 
             <Collapse in={expanded} timeout="auto" unmountOnExit>
@@ -96,22 +113,14 @@ export default function PortfolioCardV2() {
                     <NeumorphismBox
                       width={40}
                       height={25}
-                      child={<LanguageIcon />}
+                      child={LanguageIcon}
                     />
+                    <NeumorphismBox width={40} height={25} child={SpeedIcon} />
+                    <NeumorphismBox width={40} height={25} child={GitHubIcon} />
                     <NeumorphismBox
                       width={40}
                       height={25}
-                      child={<SpeedIcon />}
-                    />
-                    <NeumorphismBox
-                      width={40}
-                      height={25}
-                      child={<GitHubIcon />}
-                    />
-                    <NeumorphismBox
-                      width={40}
-                      height={25}
-                      child={<PhoneIphoneIcon />}
+                      child={PhoneIphoneIcon}
                     />
                     <IconButton
                       className={clsx(classes.expand, {

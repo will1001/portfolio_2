@@ -1,8 +1,9 @@
 // eslint-disable-next-line space-before-function-paren
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
 import PropTypes from 'prop-types'
 import IconButton from '@material-ui/core/IconButton'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 const useStyles = makeStyles(theme => ({
   root: Stylesprops => ({
@@ -22,13 +23,18 @@ const useStyles = makeStyles(theme => ({
 
 // eslint-disable-next-line space-before-function-paren
 export default function NeumorphismBoxIcon(props) {
-  const padding = (props.width - props.height) / 2
-  const boxShadow1 = props.width / 10
-  const boxShadow2 = (props.width / 10) * 2
+  const theme = useTheme()
+  const xs = useMediaQuery(theme.breakpoints.down('xs'))
+
+  const width = xs ? props.width - 5 : props.width
+  const height = xs ? props.height - 5 : props.height
+  const padding = (width - height) / 2
+  const boxShadow1 = width / 10
+  const boxShadow2 = (width / 10) * 2
 
   const Stylesprops = {
-    width: props.width,
-    height: props.height,
+    width: width,
+    height: height,
     padding: padding,
     boxShadow1: boxShadow1,
     boxShadow2: boxShadow2,
@@ -40,14 +46,16 @@ export default function NeumorphismBoxIcon(props) {
   return (
     <>
       <IconButton color="inherit">
-        <div className={classes.root}>{props.child}</div>
+        <div className={classes.root}>
+          <props.child classes={{ root: classes.icon }} />
+        </div>
       </IconButton>
     </>
   )
 }
 
 NeumorphismBoxIcon.propTypes = {
-  child: PropTypes.element,
+  child: PropTypes.object,
   width: PropTypes.number,
   height: PropTypes.number,
   hover: PropTypes.object

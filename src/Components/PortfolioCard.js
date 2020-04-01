@@ -10,30 +10,31 @@ import Divider from '@material-ui/core/Divider'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import LanguageIcon from '@material-ui/icons/Language'
 import SpeedIcon from '@material-ui/icons/Speed'
-import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone'
 import Grid from '@material-ui/core/Grid'
 import CenterGrid from './CenterGrid'
+import ListItemIconButton from './ListItemIconButton'
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     margin: 25
-  },
-  details: {
-    display: 'flex',
-    flexDirection: 'column'
+    // [theme.breakpoints.down('sm')]: {
+    //   margin: 5
+    // }
   },
   content: {
     flex: '1 0 auto'
+    // width: '100%'
   },
   cover: {
     width: '100%',
     height: '100%',
     [theme.breakpoints.down('xs')]: {
       height: 190
+    },
+    [theme.breakpoints.up('sm')]: {
+      height: '39vh'
     }
   },
   controls: {
@@ -58,14 +59,14 @@ export default function PortfolioCard() {
   return (
     <Card className={classes.root}>
       <Grid container>
-        <Grid item xs={12} sm={4} className={classes.cover}>
+        <Grid item xs={12} sm={12} md={4} className={classes.cover}>
           <CardMedia
             className={classes.cover}
             image={projectImg}
             title="Preview Project"
           />
         </Grid>
-        <Grid item xs={12} sm={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <CenterGrid
             child={
               <div>
@@ -88,60 +89,30 @@ export default function PortfolioCard() {
           />
         </Grid>
         <Divider orientation="vertical" flexItem />
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={5} md={3}>
           <Divider className={classes.dividerHorizontal} />
-          <div className={classes.details}>
-            <CardContent className={classes.content}>
-              <ListItem
-                button
-                onClick={() =>
-                  window.open('https://will1001.github.io/portfolio_2/#/')
-                }
-              >
-                <ListItemIcon>
-                  <LanguageIcon />
-                </ListItemIcon>
-                <ListItemText primary="Live Websites" />
-              </ListItem>
-              <ListItem
-                button
-                onClick={() =>
-                  window.open(
-                    'https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fwill1001.github.io%2Fportfolio_2%2F%23%2F&tab=desktop'
-                  )
-                }
-              >
-                <ListItemIcon>
-                  <SpeedIcon />
-                </ListItemIcon>
-                <ListItemText primary="Website Performance" />
-              </ListItem>
-              <ListItem
-                button
-                onClick={() =>
-                  window.open('https://github.com/will1001/portfolio_2')
-                }
-              >
-                <ListItemIcon>
-                  <GitHubIcon />
-                </ListItemIcon>
-                <ListItemText primary="Source Code" />
-              </ListItem>
-              <ListItem
-                button
-                onClick={() =>
-                  window.open(
-                    'http://iloveadaptive.com/url/https%3A%2F%2Fwill1001.github.io%2Fportfolio_2%2F'
-                  )
-                }
-              >
-                <ListItemIcon>
-                  <PhoneIphoneIcon />
-                </ListItemIcon>
-                <ListItemText primary="Responsive View" />
-              </ListItem>
-            </CardContent>
-          </div>
+          <CardContent className={classes.content}>
+            <ListItemIconButton
+              title="Live Websites"
+              link="https://will1001.github.io/portfolio_2/#/"
+              icon={LanguageIcon}
+            />
+            <ListItemIconButton
+              title="Website Performance"
+              link="https://developers.google.com/speed/pagespeed/insights/?url=https%3A%2F%2Fwill1001.github.io%2Fportfolio_2%2F%23%2F&tab=desktop"
+              icon={SpeedIcon}
+            />
+            <ListItemIconButton
+              title="Source Code"
+              link="https://github.com/will1001/portfolio_2"
+              icon={GitHubIcon}
+            />
+            <ListItemIconButton
+              title="Responsive View"
+              link="http://iloveadaptive.com/url/https%3A%2F%2Fwill1001.github.io%2Fportfolio_2%2F"
+              icon={PhoneIphoneIcon}
+            />
+          </CardContent>
         </Grid>
       </Grid>
     </Card>

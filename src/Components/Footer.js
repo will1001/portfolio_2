@@ -33,17 +33,13 @@ export default function Footer() {
       <Grid container direction="column" alignItems="flex-end">
         <div>
           <div className={classes.iconBox}>
-            <NeumorphismBoxIcon
-              width={40}
-              height={25}
-              child={<LinkedInIcon />}
-            />
+            <NeumorphismBoxIcon width={40} height={25} child={LinkedInIcon} />
           </div>
           <div className={classes.iconBox}>
-            <NeumorphismBoxIcon width={40} height={25} child={<MailIcon />} />
+            <NeumorphismBoxIcon width={40} height={25} child={MailIcon} />
           </div>
           <div className={classes.iconBox}>
-            <NeumorphismBoxIcon width={40} height={25} child={<GitHubIcon />} />
+            <NeumorphismBoxIcon width={40} height={25} child={GitHubIcon} />
           </div>
         </div>
       </Grid>
